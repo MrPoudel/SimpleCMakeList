@@ -27,5 +27,3 @@ Usuage
 
 ##References
 1. https://github.com/ttroy50
-
-* Suggestations and questions are welcome!!
