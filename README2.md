@@ -1,5 +1,4 @@
 # myappsample :shipit:
-Hello
 
 ![AUR](https://img.shields.io/aur/license/yaourt.svg)
 [![Build Status](https://travis-ci.org/MrPoudel/myappsample.svg?branch=master)](https://travis-ci.org/MrPoudel/myappsample)
