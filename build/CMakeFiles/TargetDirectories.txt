@@ -1,4 +1,0 @@
-/home/bal/Desktop/SimpleCMakeList/build/CMakeFiles/rebuild_cache.dir
-/home/bal/Desktop/SimpleCMakeList/build/CMakeFiles/edit_cache.dir
-/home/bal/Desktop/SimpleCMakeList/build/CMakeFiles/mylib.dir
-/home/bal/Desktop/SimpleCMakeList/build/CMakeFiles/Example.dir

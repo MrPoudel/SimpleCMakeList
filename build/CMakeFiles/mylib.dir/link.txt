@@ -1,2 +1,0 @@
-/usr/bin/ar qc libmylib.a  CMakeFiles/mylib.dir/sources1/cube.c.o CMakeFiles/mylib.dir/sources2/square.c.o
-/usr/bin/ranlib libmylib.a

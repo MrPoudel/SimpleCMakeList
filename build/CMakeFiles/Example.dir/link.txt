@@ -1,1 +1,0 @@
-/usr/bin/cc    CMakeFiles/Example.dir/Examples/main.c.o  -o Example libmylib.a 
