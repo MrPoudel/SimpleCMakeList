@@ -1,0 +1,24 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../headers/cube.h
+
+../headers/square.h
+
+/home/bal/Desktop/SimpleCMakeList/sources1/cube.c
+stdio.h
+-
+cube.h
+-
+
+/home/bal/Desktop/SimpleCMakeList/sources2/square.c
+stdio.h
+-
+square.h
+-
+
