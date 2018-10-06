@@ -1,8 +1,8 @@
 # SimpleCMakeList
 This project shows how to create a very simple CMakeLists.txt file and compile a C/C++ project.
 The directory structure of the Project is as follows:
-
-```SimpleCMakeList
+```
+SimpleCMakeList
 ├── CMakeLists.txt
 ├── Examples
 │   └── main.c
@@ -14,9 +14,9 @@ The directory structure of the Project is as follows:
 ├── sources1
 │   └── cube.c
 └── sources2
-    └── square.```
+    └── square.c
 
-
+```
 Usuage
 
 ##Requirements
