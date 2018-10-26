@@ -10,16 +10,15 @@ find_package(Threads REQUIRED)
 include_directories ("${PROJECT_SOURCE_DIR}/headers")
 add_library (mylib sources1/cube.c sources2/square.c)
 
-add_executable (Example Examples/main.c)
-target_link_libraries (Example mylib)
+add_executable (main examples/main.c)
+target_link_libraries (main mylib)
 
+add_executable (pointer_to_functions examples/pointer_to_functions.c)
 
-add_executable (thread_demo Examples/multithreading_safe.c)
+add_executable (multithreading examples/multithreading.c)
 #target_link_libraries (thread_demo pthread)
 #target_link_libraries (thread_demo Threads::Threads)
-target_link_libraries (thread_demo ${CMAKE_THREAD_LIBS_INIT})
-add_executable (multithreading_safe Examples/multithreading_safe.c)
-target_link_libraries (multithreading_safe ${CMAKE_THREAD_LIBS_INIT})
+target_link_libraries (multithreading ${CMAKE_THREAD_LIBS_INIT})
 
 
 #Alternative:1
