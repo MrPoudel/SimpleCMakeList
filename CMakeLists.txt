@@ -14,10 +14,12 @@ add_executable (Example Examples/main.c)
 target_link_libraries (Example mylib)
 
 
-add_executable (thread_demo Examples/thread_demo.c)
+add_executable (thread_demo Examples/multithreading_safe.c)
 #target_link_libraries (thread_demo pthread)
 #target_link_libraries (thread_demo Threads::Threads)
 target_link_libraries (thread_demo ${CMAKE_THREAD_LIBS_INIT})
+add_executable (multithreading_safe Examples/multithreading_safe.c)
+target_link_libraries (multithreading_safe ${CMAKE_THREAD_LIBS_INIT})
 
 
 #Alternative:1
