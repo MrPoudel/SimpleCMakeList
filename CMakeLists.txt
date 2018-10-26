@@ -13,12 +13,16 @@ add_library (mylib sources1/cube.c sources2/square.c)
 add_executable (main examples/main.c)
 target_link_libraries (main mylib)
 
-add_executable (pointer_to_functions examples/pointer_to_functions.c)
+add_executable (pointer_to_functions1 examples/pointer_to_functions1.c)
+add_executable (pointer_to_functions2 examples/pointer_to_functions2.c)
+add_executable (pointer_to_functions3 examples/pointer_to_functions3.c)
 
 add_executable (multithreading examples/multithreading.c)
+add_executable (multithreading_advance examples/multithreading_advance.c)
 #target_link_libraries (thread_demo pthread)
 #target_link_libraries (thread_demo Threads::Threads)
 target_link_libraries (multithreading ${CMAKE_THREAD_LIBS_INIT})
+target_link_libraries (multithreading_advance ${CMAKE_THREAD_LIBS_INIT})
 
 
 #Alternative:1
