@@ -40,4 +40,5 @@ int main()
 	printf("\n");
 	foo("%d", 5);
 	foo("%s", "Hello");
+	return 0;
 }
