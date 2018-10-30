@@ -1,76 +1,85 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <signal.h>
+#include <stdbool.h>
+#include <unistd.h>
 #include <pthread.h>
 
-#define M 3
-#define K 2
-#define N 3
-#define NUM_THREADS M * N
-
-/* Global variables for threads to share */
-int A[M][K] = {{1, 4}, {2, 5}, {3, 6}};
-int B[K][N] = {{8, 7, 6}, {5, 4, 3}};
-int C[M][N];
-
-/* Structure for passing data to threads */
-struct v
-{
-	int i; /* row */
-	int j; /* column */
-};
-
-void *runner(void *ptr); /* the thread */
-
-int main(int argc, char **argv)
-{
-	int i, j;
-	int thread_counter = 0;
-	
-	pthread_t workers[NUM_THREADS];
-	
-	/* We have to create M * N worker threads */
-	for (i = 0; i < M; i++)
-	{
-		for (j = 0; j < N; j++) 
-		{
-			struct v *data = (struct v *) malloc(sizeof(struct v));
-			data->i = i;
-			data->j = j;
-			/* Now we will create the thread passing it data as a paramater*/
-			pthread_create(&workers[thread_counter], NULL, runner, data);
-			pthread_join(workers[thread_counter], NULL);
-			thread_counter++;
-		}
-	}
-	
-	/* Waiting for threads to complete */
-	for (i = 0; i < NUM_THREADS; i++)
-	{
-	    pthread_join(workers[i], NULL);
-	}
-	
-	for(i = 0; i < M; i++)
-	{ 
-		for(j = 0; j < N; j++)
-		{ 
-			printf("%d\t", C[i][j]);
-		}
-		printf("\n");
-	}
-	return 0;
+// Stop handler
+bool running = true;
+static void stopHandler(int sign) {
+    printf("received ctrl-c");
+    running = false;
 }
 
-void *runner(void *ptr)
-{	
-	/* Casting paramater to struct v pointer */
-	struct v *data = ptr;
-	int i, sum = 0;
+
+/* Structure for passing data to threads */
+typedef struct _shared
+{
+	int i; /* row */
+	char* j; /* column */
+} shared;
+
+  
+/*thread function definition*/
+void* threadFunction(void* args)
+{
+	shared *data_arg = (shared *) args;
+   // data_arg -> i = 10;
+
+    while(running)
+    {
+        printf("I am threadFunction.\n");
+        printf("Thread:shared data[i]=%d\n", data_arg->i) ; 
+    }
+
+    printf("Thread has been exited!");
+
+    sleep(1);
+
+    pthread_exit(0);
+}
+
+
+int main()
+{
+	signal(SIGINT, stopHandler);
+    signal(SIGTERM, stopHandler);
+    /*creating thread id*/
+    pthread_t id;
+    int ret;
 	
-	for(i = 0; i < K; i++)
-	{	
-		sum += A[data->i][i] * B[i][data->j];
-	}
-	
-	C[data->i][data->j] = sum;
-	pthread_exit(0);
+	shared *data = (shared *) malloc(sizeof(shared));
+	data -> i = 10;
+	data -> j = "test";
+
+  
+    /*creating thread*/
+    if(ret = pthread_create(&id,NULL,&threadFunction, data))
+    {
+      fprintf(stderr, "error: pthread_create, rc: %d\n", ret);
+      return EXIT_FAILURE;
+    }
+    else {
+
+        printf("Thread created successfully.\n");
+
+    }
+    
+    while(running)
+    {
+      printf("I am main function.\n");  
+      printf("Main:shared data[i]=%d\n", data->i) ;   
+    }
+
+   //What happens when user presses hte control-c
+    //Main thread as well as worker threads try to exit as soon as possible
+    //which one is first is decided by the OS
+    //if thread exits first it's okay
+    //if main exits first then the thread will join to the main after delay of one second -->sleep(1)
+    //Finally, everything is fine!
+    
+    pthread_join(id, NULL);
+
+    return 0;
 }
