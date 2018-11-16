@@ -4,6 +4,11 @@ It shows how to organize a C/C++ project with different source and header direct
 cmake_minimum_required (VERSION 3.7)
 project (cmake_example)
 
+set(CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake")
+
+#find_package(Sphinx REQUIRED)
+find_package(LATEX)
+
 #set(THREADS_PREFER_PTHREAD_FLAG ON)
 find_package(Threads REQUIRED)
 
@@ -42,3 +47,4 @@ target_link_libraries (myapp ${CMAKE_THREAD_LIBS_INIT}]]
 find_package(Threads REQUIRED)
 [[target_link_libraries(my_app Threads::Threads)]]
 
+add_subdirectory(docs)
