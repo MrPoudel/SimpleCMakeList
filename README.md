@@ -59,7 +59,7 @@ SimpleCMakeList
 
 After you compile the project the generated HTML document looks like :
 
-![alt text](https://github.com/MrPoudel/SimpleCMakeList/tree/master/docs/img/Screenshot_2018-11-16.png)
+![See the doc!](https://github.com/MrPoudel/SimpleCMakeList/tree/master/docs/img/Screenshot_2018-11-16.png)
 
 Usuage
 
