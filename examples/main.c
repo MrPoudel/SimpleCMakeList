@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include "cube.h"
 #include "square.h"
+#include "check.h"
 
 int main()
 {

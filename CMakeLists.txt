@@ -18,6 +18,7 @@ add_executable (pointer_to_functions2 examples/pointer_to_functions2.c)
 add_executable (pointer_to_functions3 examples/pointer_to_functions3.c)
 add_executable (random_test examples/random_test.c)
 add_executable (variable_argument_func examples/variable_argument_func.c)
+add_executable (unix_c examples/unix_c.c)
 
 add_executable (multithreading examples/multithreading.c)
 add_executable (multithreading_advance examples/multithreading_advance.c)
