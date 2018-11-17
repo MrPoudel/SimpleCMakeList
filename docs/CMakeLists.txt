@@ -24,7 +24,7 @@ configure_file(
  
 add_custom_target(my_project_docs ALL
     ${SPHINX_EXECUTABLE}
-        -q -b html
+        -q -b html 
         -c "${BINARY_BUILD_DIR}"
         -d "${SPHINX_CACHE_DIR}"
         "${CMAKE_CURRENT_SOURCE_DIR}"

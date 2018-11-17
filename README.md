@@ -61,6 +61,9 @@ After you compile the project the generated HTML document looks like :
 
 ![See the doc!](https://github.com/MrPoudel/SimpleCMakeList/tree/master/docs/img/Screenshot_2018-11-16.png)
 
+## Hint for documentation
+- Create a directory called docs in project's root directory. Make sure that you have already installed the Sphinx package, then run the command: sphinx-quickstart. Further information can be found here [link](https://eb2.co/blog/2012/03/sphinx-and-cmake-beautiful-documentation-for-c---projects/)
+
 Usuage
 
 ##Requirements
