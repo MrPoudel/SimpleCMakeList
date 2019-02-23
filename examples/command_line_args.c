@@ -10,8 +10,7 @@ int main(int argc, char* argv[])
 	printf("I had %d arguments from the command line: \n", argc);
 	for (int i = 0; i < argc; ++i)
 	{
-		printf("Argument %d: %s\n", i, argv[i]);
-	   	
+			printf("Argument %d: %s\n", i, argv[i]);	   	
 	}
 
 	if(argc == 4)
@@ -25,13 +24,10 @@ int main(int argc, char* argv[])
          {
          	printf("argv[1] does not equal -e\n");
          }
-
          wholeNumber = atoi(argv[2]);
          printf("%s as an integer is %d. \n", argv[2], wholeNumber);
-
          decimalNumber = atof(argv[3]);
-         printf("%s as a souble is %lf.\n", argv[3], decimalNumber);
+         printf("%s as a double is %lf.\n", argv[3], decimalNumber);
 	}
-
 	return 0;
 }

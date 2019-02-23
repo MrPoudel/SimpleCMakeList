@@ -26,6 +26,8 @@ add_executable (variable_argument_func examples/variable_argument_func.c)
 add_executable (unix_c examples/unix_c.c)
 add_executable (mem_leak_checking examples/mem_leak_checking.c)
 add_executable (command_line_args examples/command_line_args.c)
+add_executable (read_number_from_file examples/file_RW/read_number_from_file.c)
+file (COPY ${CMAKE_CURRENT_SOURCE_DIR}/examples/file_RW/my_first_file.txt DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
 
 add_executable (multithreading examples/multithreading.c)
 add_executable (multithreading_advance examples/multithreading_advance.c)
