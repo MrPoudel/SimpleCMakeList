@@ -38,7 +38,7 @@ int main()
 	foo("%c%d%c%c%c",'x', 9,'A','B','C');
 	//foo("%c%d%c%c%c",'x', 9,'A'); //if this line is uncommented it will print garbage values
 	printf("\n");
-	foo("%d", 5);
-	foo("%s", "Hello");
+	foo("d", 5); //% does not matter. Inside the switch statement it will only look for s,d or c.
+	foo("s", "Hello");
 	return 0;
 }

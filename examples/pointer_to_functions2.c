@@ -2,17 +2,8 @@
 //Function pointer as a argument to another
 #include <stdio.h>
 
-void callback(int times, const char* name){
-
-	for (int i = 0; i < times; ++i)
-	{
-		printf("%s\n", name);
-	}
-}
-
-void call_callback(void (*ptr) (int , const char* )){
-	ptr(5, "Calling via another function");
-}
+void callback(int , const char*);
+void call_callback(void (*ptr) (int , const char* ));
 
 int main(){
 
@@ -23,4 +14,16 @@ int main(){
 	p(2, "Direct calling again!");
 	
 	return 0;
+}
+
+void callback(int times, const char* name){
+
+	for (int i = 0; i < times; ++i)
+	{
+		printf("%s\n", name);
+	}
+}
+
+void call_callback(void (*ptr) (int , const char* )){
+	ptr(5, "Calling via another function");
 }
