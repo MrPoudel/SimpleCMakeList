@@ -35,6 +35,10 @@ file (COPY ${CMAKE_CURRENT_SOURCE_DIR}/examples/file_RW/my_second_file.txt DESTI
 
 add_executable (multithreading examples/multithreading.c)
 add_executable (multithreading_advance examples/multithreading_advance.c)
+add_executable (fcn_ptr_as_arg examples/fcn_ptr_as_arg.c)
+add_executable (return_fcn_ptr examples/return_fcn_ptr.c)
+add_executable (array_of_fcn_ptr examples/array_of_fcn_ptr.c)
+add_executable (function_ptr_as_struct_member examples/function_ptr_as_struct_member.c)
 #add_executable (singlyLinkedList examples/singlyLinkedList.c)
 #add_executable (singlyLinkedList2 examples/singlyLinkedList2.c)
 #target_link_libraries (thread_demo pthread)
