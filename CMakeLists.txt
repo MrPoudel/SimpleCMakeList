@@ -12,8 +12,13 @@ find_package(LATEX)
 #set(THREADS_PREFER_PTHREAD_FLAG ON)
 find_package(Threads REQUIRED)
 
-include_directories ("${PROJECT_SOURCE_DIR}/headers")
+#include_directories ("${PROJECT_SOURCE_DIR}/headers") ## This line can be removed with target_include_directories
+
 add_library (mylib sources1/cube.c sources2/square.c)
+target_include_directories(mylib  
+    PUBLIC
+        "${CMAKE_CURRENT_SOURCE_DIR}/headers"
+)
 
 add_executable (main examples/main.c)
 target_link_libraries (main mylib)
@@ -61,5 +66,24 @@ target_link_libraries (myapp ${CMAKE_THREAD_LIBS_INIT}]]
 find_package(Threads REQUIRED)
 [[target_link_libraries(my_app Threads::Threads)]]
 
-add_subdirectory(docs)
-add_subdirectory(test)
+#add_subdirectory(docs)
+#add_subdirectory(test)
+
+##Adding tests
+include(CTest)
+add_test(test1 "${CMAKE_BINARY_DIR}/simple_pointer") # This is not the real test, it's just a executable used which always passes
+
+message("cmake installation prefix is set to :${CMAKE_INSTALL_PREFIX}")
+##Installing some library and headers
+
+set(HEADERS ${PROJECT_SOURCE_DIR}/headers/cube.h ${PROJECT_SOURCE_DIR}/headers/square.h)
+
+install(TARGETS mylib DESTINATION lib)
+install(FILES "${PROJECT_SOURCE_DIR}/headers/cube.h" DESTINATION include)
+install(FILES "${PROJECT_SOURCE_DIR}/headers/square.h" DESTINATION include)
+
+## Packaging
+
+set(CPACK_GENERATOR "DEB") # without this line .tar.gz will be created..by this .deb
+set(CPACK_DEBIAN_PACKAGE_MAINTAINER "DovanTech") #required
+include(CPack)

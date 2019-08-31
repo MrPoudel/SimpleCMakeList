@@ -66,25 +66,54 @@ After you compile the project the generated HTML document looks like :
 
 Usuage
 
-##Requirements
+# Requirements
 
-1. The GNU toolchain: 
-2. cmake
-3. GNU make
+- [  x] cmake
+- [x] GNU make
+- [x] build-essential
+- [ ] git
+- [x] pkg-config 
+- [ ] python
 
 ##Instructions
 
-###Building
+# Building
 
-1. Clone the repository: https://github.com/MrPoudel/SimpleCMakeList.git 
+1. Clone the repository: `https://github.com/MrPoudel/SimpleCMakeList.git` 
 
-2. cd SimpleCMakeList
+2. `cd SimpleCMakeList`
 
-3. mkdir build
+3. `mkdir build`
 
-4. cd build && cmake ..
+4. `cd build && cmake ..`
 
-5. make
+5. `make`
 
+# How to add tests
+
+To integrate the tests in cmake we need `include(CTest)`. After that we can use `add_test()` function to generate the tests.
+`add_test( "name of test" "your_executable" option_arg1 optional_arg_2 ...)`
+
+Running the test: `$ ctest`
+
+# How to install the library 
+
+With cmake the library can be installed in the `CMAKE_INSTALL_PREFIX/your_favored_path` directory. In most of the cases, installation means copying the libraries and the header file in bin and include directory. Using `install(FILES "library_name_with_path" DESTINATION include)` and 
+`install(TARGETS "library_name_with_path" DESTINATION lib)`.
+
+So, the installation directories will be:
+`CMAKE_INSTALL_PREFIX/bin` and `CMAKE_INSTALL_PREFIX/lib`
+
+Installing:
+`$ sudo make install`
+
+# How to create packaging
+
+Packaging the library means that it can be packed into compressed files. Additionally, we can also create the installation executable. When this executable is installed, it takes care of the library installationa as done by the `install` command.
+`include(CPack)` needs to be added in the CMakeLists.txt file.
+
+Packaging:
+`$ cpack` or `$ make package`
+After that it will create the `.deb` package which can be installed using `sudo dpkg -i package_name.deb`
 
 
