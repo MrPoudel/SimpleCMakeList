@@ -117,3 +117,37 @@ Packaging:
 After that it will create the `.deb` package which can be installed using `sudo dpkg -i package_name.deb`
 
 
+# How to add an existing git repository as a submodule in the repository
+
+To demnstrate this, a very useful external library called `uncrustify` will be added to this repository.
+
+`$ git submodule add  https://github.com/uncrustify/uncrustify.git extern/uncrustify`
+
+
+Following code will be added to the main `CMakeLists.txt` to automatically update the added submodule. taken from: https://cliutils.gitlab.io/modern-cmake/chapters/projects/submodule.html
+
+```
+find_package(Git QUIET)
+if(GIT_FOUND AND EXISTS "${PROJECT_SOURCE_DIR}/.git")
+# Update submodules as needed
+    option(GIT_SUBMODULE "Check submodules during build" ON)
+    if(GIT_SUBMODULE)
+        message(STATUS "Submodule update")
+        execute_process(COMMAND ${GIT_EXECUTABLE} submodule update --init --recursive
+                        WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+                        RESULT_VARIABLE GIT_SUBMOD_RESULT)
+        if(NOT GIT_SUBMOD_RESULT EQUAL "0")
+            message(FATAL_ERROR "git submodule update --init failed with ${GIT_SUBMOD_RESULT}, please checkout submodules")
+        endif()
+    endif()
+endif()
+
+if(NOT EXISTS "${PROJECT_SOURCE_DIR}/extern/repo/CMakeLists.txt")
+    message(FATAL_ERROR "The submodules were not downloaded! GIT_SUBMODULE was turned off or failed. Please update submodules and try again.")
+endif()
+
+```
+
+Then finally, `add_subdirectory(extern/uncrustify)`
+
+# Integration of CI: TODO

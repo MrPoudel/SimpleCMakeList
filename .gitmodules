@@ -1,0 +1,3 @@
+[submodule "extern/uncrustify"]
+	path = extern/uncrustify
+	url = https://github.com/uncrustify/uncrustify.git
