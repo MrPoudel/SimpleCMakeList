@@ -68,7 +68,7 @@ Usuage
 
 # Requirements
 
-- [  x] cmake
+- [x] cmake
 - [x] GNU make
 - [x] build-essential
 - [ ] git
