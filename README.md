@@ -149,5 +149,10 @@ endif()
 ```
 
 Then finally, `add_subdirectory(extern/uncrustify)`
+Current dirty way of running the uncrustify for one file:
+```
+./uncrustify -c ~/Desktop/SimpleCMakeList/extern/uncrustify/forUncrustifySources.cfg  --no-backup ~/Desktop/SimpleCMakeList/examples/unix_c.c 
+
+```
 
 # Integration of CI: TODO
