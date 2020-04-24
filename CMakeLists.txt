@@ -6,6 +6,21 @@ project (cmake_example)
 
 set(CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake")
 
+# Find Cppcheck
+find_package(Cppcheck)
+set(CPPCHECK_XML_OUTPUT "${PROJECT_BINARY_DIR}/analysis/cppcheck/cppcheck_analysis.xml")
+find_program(CMAKE_CXX_CPPCHECK NAMES cppcheck)
+if (CMAKE_CXX_CPPCHECK)
+    list(
+        APPEND CMAKE_CXX_CPPCHECK 
+            "--enable=warning"
+            "--inconclusive"
+            "--force" 
+            "--inline-suppr"
+            #"--suppressions-list=${CMAKE_SOURCE_DIR}/CppCheckSuppressions.txt"
+    )
+endif()
+
 #find_package(Sphinx REQUIRED)
 find_package(LATEX)
 
